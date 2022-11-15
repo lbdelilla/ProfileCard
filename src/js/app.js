@@ -26,8 +26,8 @@ function render(variables = {}) {
   console.log("These are the current variables: ", variables); //print on the console
   // here we ask the logical questions to make decisions on how to build the html
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
-  let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
-  if (variables.includeCover == false) cover = "<div class='cover'></div>";
+  //let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
+  //if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
   let name =
     variables.name == null || variables.name == "" ? "Name" : variables.name;
@@ -48,10 +48,20 @@ function render(variables = {}) {
       ? "Country"
       : variables.country;
 
+  let avatarURL =
+    variables.avatarURL == null || variables.avatarURL == ""
+      ? "https://static.pokemonpets.com/images/monsters-images-800-800/143-Snorlax.webp"
+      : variables.avatarURL;
+
+  let background =
+    variables.background == null || variables.background == ""
+      ? "https://img.freepik.com/vector-gratis/fondo-paisaje-primavera-hermosa-dibujada_23-2148857331.jpg?w=2000"
+      : variables.background;
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
-            ${cover}
-          <img src="${variables.avatarURL}" class="photo" />
+        <div class="cover"><img src="${background}" /></div>
+          <img src="${avatarURL}" class="photo" />
           <h1> ${name} ${lastname} </h1>
           <h2>${role}</h2>
           <h3>${city},${country}</h3>
