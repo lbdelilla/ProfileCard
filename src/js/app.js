@@ -29,13 +29,32 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  let name =
+    variables.name == null || variables.name == "" ? "Name" : variables.name;
+
+  let lastname =
+    variables.lastname == null || variables.lastname == ""
+      ? "Lastname"
+      : variables.lastname;
+
+  let role =
+    variables.role == null || variables.role == "" ? "Role" : variables.role;
+
+  let city =
+    variables.city == null || variables.city == "" ? "City" : variables.city;
+
+  let country =
+    variables.country == null || variables.country == ""
+      ? "Country"
+      : variables.country;
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>${variables.name} ${variables.lastname} </h1>
-          <h2>${variables.role}</h2>
-          <h3>${variables.city},${variables.country}</h3>
+          <h1> ${name} ${lastname} </h1>
+          <h2>${role}</h2>
+          <h3>${city},${country}</h3>
           <ul class="${variables.socialMediaPosition}">
             <li><a href="https://twitter.com/elonmusk"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://github.com/lbdelilla"><i class="fab fa-github"></i></a></li>
@@ -66,7 +85,7 @@ window.onload = function() {
     github: "lbdelilla",
     linkedin: null,
     instagram: null,
-    name: "Name",
+    name: null,
     lastname: "Lastname",
     role: "Role",
     country: "Country",
@@ -87,7 +106,7 @@ window.onload = function() {
           : this.value == "false"
           ? false
           : this.value;
-      render(Object.assign(window.variables, values)); // render again the card with new valus
+      render(Object.assign(window.variables, values)); // render again the card with new values
     });
   });
 };
