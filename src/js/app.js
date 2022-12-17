@@ -58,6 +58,31 @@ function render(variables = {}) {
       ? "https://img.freepik.com/vector-gratis/fondo-paisaje-primavera-hermosa-dibujada_23-2148857331.jpg?w=2000"
       : variables.background;
 
+  let socialMedia =
+    variables.socialMediaPosition == null || variables.socialMediaPosition == ""
+      ? "left"
+      : variables.socialMediaPosition;
+
+  let twitter =
+    variables.twitter == null || variables.twitter == ""
+      ? "https://twitter.com/elonmusk"
+      : variables.twitter;
+
+  let instagram =
+    variables.instagram == null || variables.instagram == ""
+      ? "https://www.instagram.com/lulubelen"
+      : variables.instagram;
+
+  let github =
+    variables.github == null || variables.github == ""
+      ? "https://github.com/lbdelilla"
+      : variables.github;
+
+  let linkedin =
+    variables.linkedin == null || variables.linkedin == ""
+      ? "https://www.linkedin.com/in/luc%C3%ADabelen/"
+      : variables.linkedin;
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
         <div class="cover"><img src="${background}" /></div>
@@ -65,11 +90,11 @@ function render(variables = {}) {
           <h1> ${name} ${lastname} </h1>
           <h2>${role}</h2>
           <h3>${city},${country}</h3>
-          <ul class="${variables.socialMediaPosition}">
-            <li><a href="https://twitter.com/elonmusk"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/lbdelilla"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/luc%C3%ADabelen/"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://www.instagram.com/lulubelen/"><i class="fab fa-instagram"></i></a></li>
+          <ul class="${socialMedia}">
+            <li><a href="${twitter}"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="${github}"><i class="fab fa-github"></i></a></li>
+            <li><a href="${linkedin}"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="${instagram}"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
